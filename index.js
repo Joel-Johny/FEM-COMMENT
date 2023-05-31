@@ -85,9 +85,15 @@ function printComment(comment){
     votes.className="votes"
     const plusIcon=document.createElement("img")
     plusIcon.src="./images/icon-plus.svg"
+    plusIcon.addEventListener("click",handleVotes)
+    plusIcon.alt="+"
+    plusIcon.className="inc"
     const span=document.createElement("span")
     span.textContent=comment.score
     const minusIcon=document.createElement("img")
+    minusIcon.addEventListener("click",handleVotes)
+    minusIcon.alt="-"
+    minusIcon.className="dec"
     minusIcon.src="./images/icon-minus.svg"
     votes.appendChild(plusIcon)
     votes.appendChild(span)
@@ -134,5 +140,25 @@ function printComment(comment){
     card.appendChild(main)
 
     container.appendChild(card)
+
+}
+
+function handleVotes(event){
+  const opertaion=event.target.alt
+
+  if(opertaion=="+"){
+    const voteElement=event.target.nextElementSibling
+    voteElement.textContent=parseInt(voteElement.textContent)+1
+    event.target.style.pointerEvents="none"
+    event.target.nextElementSibling.nextElementSibling.style.pointerEvents="auto"
+
+  }
+  else{
+    const voteElement=event.target.previousElementSibling
+    voteElement.textContent=parseInt(voteElement.textContent)-1
+    event.target.style.pointerEvents="none"
+    event.target.previousElementSibling.previousElementSibling.style.pointerEvents="auto"
+
+  }
 
 }

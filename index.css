@@ -57,10 +57,13 @@ body{
 .inc{
     height: 11px;
     width: 11px;
+    cursor: pointer;
 }
 .dec{
     width: 10px;
     height: 3px;
+    cursor: pointer;
+
 }
 .main{
     width: 100%;

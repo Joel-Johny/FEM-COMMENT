@@ -68,14 +68,37 @@ const dataObj = {
   }
 
 const comments=dataObj.comments
+const container= document.getElementsByClassName("container")[0]
 
-comments.forEach((comment)=>{
-    printComment(comment)
-})
+function Commments(comments){
+  let reply=comments[0].replies
+  if(reply===undefined){
+    const replyContainer=document.createElement("div")
+    replyContainer.className="reply"
+    comments.forEach((comment)=>{
+        let card=printComment(comment)
+        replyContainer.appendChild(card)
+        container.appendChild(replyContainer)
+      })
+  }
+  else{
+    comments.forEach((comment)=>{
+      let card=printComment(comment)
+      
+        container.appendChild(card)
+      if(comment.replies.length>0){
+        console.log("nested Sending replies",comment.replies)
+        Commments(comment.replies)
+      }
+  })
 
+  }
+
+
+}
+Commments(comments)
 function printComment(comment){
     
-    const container= document.getElementsByClassName("container")[0]
     
     const card=document.createElement("div")
     card.className="card"
@@ -112,7 +135,7 @@ function printComment(comment){
     dp.className="dp"
     dp.src=comment.user.image.png
     const author=document.createElement("span")
-    author.textContent=comment.username
+    author.textContent=comment.user.username
     const time=document.createElement("span")
     time.textContent=comment.createdAt
     section1.appendChild(dp)
@@ -135,11 +158,15 @@ function printComment(comment){
 
     const p=document.createElement("p")
     p.className="comment"
-    p.textContent=comment.content
+    if(comment.replyingTo)
+      p.innerHTML=`<span class="replyTo">@${comment.replyingTo}</span> ${comment.content}`
+    
+    else
+      p.textContent=comment.content
     main.appendChild(p)
     card.appendChild(main)
 
-    container.appendChild(card)
+    return card
 
 }
 

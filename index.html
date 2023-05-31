@@ -13,14 +13,40 @@
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-  <!-- Pull dynamic content from the data.json file -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="container">
+
+    <div class="card">
+        <div class="votes">
+          <img src="/images/icon-plus.svg" class="inc">
+          <span>10</span>
+          <img src="/images/icon-minus.svg"  class="dec">
+        </div>
+        <div class="main">
+          <div class="profile">
+            <div class="section1">
+              <img src="/images/avatars/image-amyrobson.png" class="dp">
+              <span class="name">Joel</span>
+              <span class="time">12 hours ago</span>
+            </div>
+            <div class="section2">
+              <img src="/images/icon-reply.svg"> 
+              <span>Reply</span>
+            </div>
+          </div>
+          <p class="comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex ad optio eligendi, nesciunt cupiditate cumque consectetur dolorum vero porro quae voluptatibus, enim repellat libero ratione aliquam quam veniam, modi eaque.</p>
+        </div>
+    </div>
+
+    <div class="reply">
+      
+    </div>
+
   </div>
+
+<script src="index.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-{
+const dataObj = {
   "currentUser": {
     "image": { 
       "png": "./images/avatars/image-juliusomo.png",
@@ -66,3 +66,7 @@
     }
   ]
 }
+
+module.exports = {
+  data:dataObj
+};
